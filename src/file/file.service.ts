@@ -12,6 +12,7 @@ export enum FileType {
 export class FileService {
   createFile(type: FileType, file): string {
     try {
+      if (!file) return '';
       const fileExtension = file.originalname.split('.').pop();
       const fileName = `${uuid.v4()}.${fileExtension}`;
       const filePath = path.resolve(__dirname, '..', 'static', type);

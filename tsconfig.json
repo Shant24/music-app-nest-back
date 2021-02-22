@@ -10,6 +10,26 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
-  }
+    "incremental": true,
+    "strict": true,
+    "importHelpers": true,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"]
+  },
+  "files": [
+    "./src/main.ts",
+    "./src/app.module.ts",
+    "./src/track/track.module.ts",
+    "./src/track/track.controller.ts",
+    "./src/track/track.service.ts",
+    "./src/track/dto/create-comment.dto.ts",
+    "./src/track/dto/create-track.dto.ts",
+    "./src/track/schemas/comment.schema.ts",
+    "./src/track/schemas/track.schema.ts",
+    "./src/file/file.module.ts",
+    "./src/file/file.service.ts",
+    "./src/album/schemas/album.schema.ts"
+  ],
+  "include": ["src/**/*.ts"],
+  "exclude": []
 }

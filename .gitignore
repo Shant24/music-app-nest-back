@@ -27,6 +27,7 @@ lerna-debug.log*
 *.sublime-workspace
 
 # IDE - VSCode
+.idea
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -34,5 +35,6 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 yarn.lock
+package-lock.json
 
 .env

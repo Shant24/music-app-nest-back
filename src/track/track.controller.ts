@@ -1,14 +1,4 @@
-import {
-  Controller,
-  Body,
-  Get,
-  Post,
-  Delete,
-  Param,
-  Query,
-  UploadedFiles,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Body, Get, Post, Delete, Param, Query, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { ObjectId } from 'mongoose';
 
@@ -23,10 +13,13 @@ export class TrackController {
 
   @Post()
   @UseInterceptors(
-    FileFieldsInterceptor([
-      { name: 'picture', maxCount: 1 },
-      { name: 'audio', maxCount: 1 },
-    ]),
+    FileFieldsInterceptor(
+      [
+        { name: 'picture', maxCount: 1 },
+        { name: 'audio', maxCount: 1 },
+      ],
+      { limits: { fileSize: 1000000 } },
+    ),
   )
   create(@UploadedFiles() files, @Body() dto: CreateTrackDto) {
     const { picture, audio } = files;

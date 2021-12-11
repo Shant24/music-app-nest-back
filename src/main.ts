@@ -7,7 +7,7 @@ const start = async () => {
     const PORT = process.env.PORT || 5000;
     const app = await NestFactory.create(AppModule);
     app.use(json({ limit: '50mb' }));
-    app.use(urlencoded({ extended: true, limit: '50mb' }));
+    app.use(urlencoded({ limit: '50mb', extended: true, parameterLimit: 100000 }));
     app.enableCors();
     await app.listen(PORT, () => console.log(`server started on PORT ${PORT}`));
   } catch (e) {

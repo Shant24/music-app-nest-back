@@ -1,11 +1,12 @@
 {
-  "name": "server",
+  "name": "music-app-nest-back",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prod": "pm2 start 'node dist/main' --name music-app-nest-back",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

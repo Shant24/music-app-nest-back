@@ -18,7 +18,7 @@ export class TrackController {
         { name: 'picture', maxCount: 1 },
         { name: 'audio', maxCount: 1 },
       ],
-      { limits: { fileSize: 1000000 } },
+      { limits: { fileSize: 50000000 } },
     ),
   )
   create(@UploadedFiles() files, @Body() dto: CreateTrackDto) {

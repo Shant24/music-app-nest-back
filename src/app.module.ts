@@ -7,13 +7,15 @@ import * as path from 'path';
 import { TrackModule } from './track/track.module';
 import { FileModule } from './file/file.module';
 
+const MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/music-app';
+
 @Module({
   imports: [
+    MongooseModule.forRoot(MONGODB),
     ConfigModule.forRoot(),
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, 'static'),
     }),
-    MongooseModule.forRoot(process.env.MONGODB),
     TrackModule,
     FileModule,
   ],

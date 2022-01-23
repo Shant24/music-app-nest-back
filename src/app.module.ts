@@ -3,11 +3,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ConfigModule } from '@nestjs/config';
 import * as path from 'path';
+import * as dotenv from 'dotenv';
 
 import { TrackModule } from './track/track.module';
 import { FileModule } from './file/file.module';
 
-const MONGODB = process.env.MONGODB || 'mongodb://localhost:27017/music-app';
+dotenv.config();
+
+const MONGODB = process.env.MONGODB || '';
 
 @Module({
   imports: [

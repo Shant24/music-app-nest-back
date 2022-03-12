@@ -8,6 +8,8 @@ export enum FileType {
   IMAGE = 'image',
 }
 
+const filesStaticPath = path.resolve(__dirname, '../../..', 'music-static-datas');
+
 @Injectable()
 export class FileService {
   createFile(type: FileType, file): string {
@@ -15,10 +17,12 @@ export class FileService {
       if (!file) return '';
       const fileExtension = file.originalname.split('.').pop();
       const fileName = `${uuid.v4()}.${fileExtension}`;
-      const filePath = path.resolve(__dirname, '..', 'static', type);
+      const filePath = path.resolve(filesStaticPath, type);
+
       if (!fs.existsSync(filePath)) {
         fs.mkdirSync(filePath, { recursive: true });
       }
+      
       fs.writeFileSync(path.resolve(filePath, fileName), file.buffer);
       return `${type}/${fileName}`;
     } catch (e) {
@@ -28,7 +32,8 @@ export class FileService {
 
   removeFile(fileName: string): string {
     try {
-      const filePath = path.resolve(__dirname, '..', 'static', fileName);
+      const filePath = path.resolve(filesStaticPath, fileName);
+      
       fs.unlinkSync(filePath);
       return fileName;
     } catch (e) {

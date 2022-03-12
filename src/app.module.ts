@@ -12,15 +12,18 @@ dotenv.config();
 
 const MONGODB = process.env.MONGODB || '';
 
+export const filesStaticPath = path.resolve(__dirname, '../..', 'music-static-datas');
+
 @Module({
   imports: [
     MongooseModule.forRoot(MONGODB),
     ConfigModule.forRoot(),
     ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname, 'static'),
+      rootPath: filesStaticPath,
     }),
     TrackModule,
     FileModule,
   ],
 })
+
 export class AppModule {}

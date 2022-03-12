@@ -3,12 +3,12 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as uuid from 'uuid';
 
+import { filesStaticPath } from '../app.module';
+
 export enum FileType {
   AUDIO = 'audio',
   IMAGE = 'image',
 }
-
-const filesStaticPath = path.resolve(__dirname, '../../..', 'music-static-datas');
 
 @Injectable()
 export class FileService {
